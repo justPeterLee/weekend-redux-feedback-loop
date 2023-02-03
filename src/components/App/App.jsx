@@ -3,6 +3,17 @@ import axios from "axios";
 import { HashRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
+// imported components 
+import CreateFeedback from "../CreateFeedback/CreateFeedback";
+import Feeling from "../Questions/Feeling/Feeling";
+import Understanding from "../Questions/Understanding/Understanding";
+import Support from "../Questions/Support/Support";
+import Comments from "../Questions/Comments/Comments";
+
+import Review from "../Review/Review";
+import Admin from "../Admin/Admin";
+
+
 function App() {
   return (
     <Router>
@@ -16,7 +27,35 @@ function App() {
 
       {/* create router routes */}
       <Route path='/' exact>
-        <h1>hello</h1>
+        <CreateFeedback />
+      </Route>
+
+      {/* Feeedback Question */}
+      <Route path='/feedback/feeling' exact>
+        <Feeling />
+      </Route>
+
+      <Route path='/feedback/understand' exact>
+        <Understanding />
+      </Route>
+
+      <Route path='/feedback/support' exact>
+        <Support />
+      </Route>
+
+      <Route path='/feedback/comments' exact>
+        <Comments />
+      </Route>
+
+
+      {/* Review */}
+      <Route path='/feedback/review' exact>
+        <Review />
+      </Route>
+
+      {/* Manage Feedback */}
+      <Route path='/feedback/admin' exact>
+        <Admin />
       </Route>
     </Router>
   );
