@@ -29,11 +29,11 @@ function feedbackAnswer(state = {}, action) {
     case "ADD_FEELING":
       return (state = { ...state, feeling: action.payload });
     case "ADD_UNDERSTAND":
-      return (state = { ...state, understand: action.payload });
+      return (state = { ...state, understanding: action.payload });
     case "ADD_SUPPORT":
       return (state = { ...state, support: action.payload });
     case "ADD_COMMENT":
-      return (state = { ...state, comment: action.payload });
+      return (state = { ...state, comments: action.payload });
     case "CLEAR":
       return (state = {});
     default:
