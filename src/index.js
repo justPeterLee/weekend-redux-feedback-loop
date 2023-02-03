@@ -19,7 +19,6 @@ import axios from 'axios';
 
 //----- saga ------
 const sagaMiddleware = createSagaMiddleware();
-sagaMiddleware.run(watcherSaga)
 
 // saga generator function 
 function* watcherSaga(){
@@ -37,6 +36,8 @@ const store = createStore(
 
     applyMiddleware(logger,sagaMiddleware)
 )
+
+sagaMiddleware.run(watcherSaga)
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
