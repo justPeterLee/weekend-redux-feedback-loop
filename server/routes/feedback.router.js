@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool");
 
-//GET
+// GET - retrieves all of users feedback 
 router.get("/", (req, res) => {
   pool
     .query('SELECT * FROM "feedback";')
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// POST
+// POST - creates a new feedback to the data base
 router.post("/", (req, res) => {
   const feedback = req.body;
   const queryText = `INSERT INTO feedback("feeling", "understanding", "support", "comments")
@@ -36,7 +36,7 @@ router.post("/", (req, res) => {
     });
 });
 
-// DELETE
+// DELETE - deletes a feedback from the database
 router.delete("/:id", (req, res) => {
   const queryText = "DELETE FROM feedback WHERE id=$1";
   pool
