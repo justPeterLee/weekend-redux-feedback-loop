@@ -78,3 +78,30 @@ Improve the styling of the app using Material-UI. This might include cards, snac
 
 ### DEPLOY
 Deploy your project to Heroku. You'll need to read the special instructions for building and deploying with React. 
+
+
+
+# To Do #
+
+- set up 
+1) create redux store 
+2) set up saga 
+3) create routes within the server
+    - get request 
+    - post request 
+    - delete request
+4) set up pages with router 
+    - routes 
+
+
+- pages
+1) input form 
+2) submit function 
+    - next button 
+        - redux
+    - submit button
+        - postico 
+ 
+
+
+
