@@ -1,6 +1,12 @@
+import QuestionForm from "../QuestionForm/QuestionForm";
 function Feeling(){
     return(
-        <h1>Feeling</h1>
+        <QuestionForm 
+        path={'/feedback/understand'}
+        question={'How are you feeling today? (1-5)'}
+        subQuestion={'Feeling?'}
+        type={'number'}
+        />
     )
 }
 

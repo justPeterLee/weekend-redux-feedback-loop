@@ -1,6 +1,12 @@
+import QuestionForm from "../QuestionForm/QuestionForm";
 function Comments(){
     return(
-        <h1> comment </h1>
+        <QuestionForm 
+        path={'/feedback/review'}
+        question={'Any comments you want to leave?'}
+        subQuestion={'Comments'}
+        type={'text'}
+        />
     )
 }
 

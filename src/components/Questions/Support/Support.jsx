@@ -1,6 +1,14 @@
+import QuestionForm from "../QuestionForm/QuestionForm";
+
 function Support(){
+
     return(
-        <h1>Support</h1>
+        <QuestionForm 
+        path={'/feedback/comments'}
+        question={'How well are you being supported? (1-5)'}
+        subQuestion={'Support?'}
+        type={'number'}
+        />
     )
 }
 
