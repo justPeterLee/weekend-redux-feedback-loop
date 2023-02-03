@@ -6,12 +6,37 @@ import registerServiceWorker from './registerServiceWorker';
 
 // redux
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-
+import { Provider } from 'react-redux';
+import logger from 'redux-logger';
 // saga 
 import createSagaMiddleware from '@redux-saga/core';
 import {takeEvery, put} from 'redux-saga/effects'
 
 //axios
 import axios from 'axios';
-ReactDOM.render(<App />, document.getElementById('root'));
+
+
+
+//----- saga ------
+const sagaMiddleware = createSagaMiddleware();
+sagaMiddleware.run(watcherSaga)
+
+// saga generator function 
+function* watcherSaga(){
+
+}
+
+
+// ----- redux -----
+
+// store instance 
+const store = createStore(
+    combineReducers({
+        // reducers 
+    }),
+
+    applyMiddleware(logger,sagaMiddleware)
+)
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
