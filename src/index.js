@@ -21,9 +21,6 @@ const sagaMiddleware = createSagaMiddleware();
 // saga generator function
 function* watcherSaga() {}
 
-
-
-
 // ----- redux -----
 // # reducers
 // question answers
@@ -37,18 +34,18 @@ function feedbackAnswer(state = {}, action) {
       return (state = { ...state, support: action.payload });
     case "ADD_COMMENT":
       return (state = { ...state, comment: action.payload });
+    case "CLEAR":
+      return (state = {});
     default:
       return state;
   }
 }
 
-
-
 // store instance
 const store = createStore(
   combineReducers({
     // reducers
-    feedbackAnswer
+    feedbackAnswer,
   }),
 
   applyMiddleware(logger, sagaMiddleware)
