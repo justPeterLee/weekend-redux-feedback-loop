@@ -1,24 +1,37 @@
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 function Review() {
-    const history = useHistory();
+  const history = useHistory();
 
+  const [incomplete, setIncomplete] = useState(true)
   const answers = useSelector((store) => store);
-  const comment = useSelector((store) => store.feedbackAnswer.comments);
 
   const confirmHandler = () => {
-    history.push('/')
+    history.push("/");
+  };
+
+  const completeChecker = () => {
+    if(answers.feedbackAnswer.feeling && answers.feedbackAnswer.understanding && answers.feedbackAnswer.support){
+      setIncomplete(false)
+    }else{
+      setIncomplete(true)
+    }
+
   }
+
+  useEffect(()=>{completeChecker()}, [])
+
   return (
     <div>
       <div>
         <p>Feelings: {answers.feedbackAnswer.feeling}</p>
         <p>Understanding: {answers.feedbackAnswer.understanding}</p>
         <p>Support: {answers.feedbackAnswer.support}</p>
-        {comment ? <p> Comment: {comment}</p> : <p>Comment: n/a</p>}
+        {answers.feedbackAnswer.comments ? <p> Comment: {answers.feedbackAnswer.comments}</p> : <p>Comment: n/a</p>}
       </div>
-      
-      <button onClick={confirmHandler}> Confirm </button>
+
+      {!incomplete ? <button onClick={confirmHandler} > Confirm </button> : <button onClick={confirmHandler} disabled> Incomplete </button> }
     </div>
   );
 }
