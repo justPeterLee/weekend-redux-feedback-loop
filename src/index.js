@@ -54,14 +54,16 @@ function feedbackAnswer(state = {}, action) {
 }
 
 // post request validation 
-function postMade(state = false, action){
+function postMade(state = null, action){
   switch (action.type){
     case "FEEDBACK_SUCCESS":
       return state = true;
     case "FEEDBACK_FAILED":
       return state = false;
+    case "RESET":
+      return state = null;
     default:
-      return state = false;
+      return state;
   }
 }
 
