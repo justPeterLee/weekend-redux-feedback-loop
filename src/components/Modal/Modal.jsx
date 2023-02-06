@@ -1,5 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
+import "./Modal.css";
 function Modal() {
   const history = useHistory();
 
@@ -18,14 +20,18 @@ function Modal() {
     }
   };
   return (
-    <div>
+    <div className="start-container">
       {pageCondition ? (
-        <h1>FeedBack Sent!</h1>
+        <h1 className="start-header">FeedBack Sent!</h1>
       ) : (
-        <h1>Feedback was unable to send</h1>
+        <h1 className="start-header">Feedback was unable to send</h1>
       )}
 
-      <button onClick={newFeedback}>Leave New Feedback</button>
+      <div>
+        <button onClick={newFeedback} className="start-button">
+          Leave New Feedback
+        </button>
+      </div>
     </div>
   );
 }

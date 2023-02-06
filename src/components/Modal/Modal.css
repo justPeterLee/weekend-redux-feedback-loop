@@ -1,0 +1,21 @@
+.start-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 2px 3px 4px 1px #D3D3D3;
+
+    width:600px;
+    height: 300px;
+    
+}
+
+.start-button{
+    width: 80px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px #D3D3D3;
+}
