@@ -19,8 +19,20 @@ import axios from "axios";
 const sagaMiddleware = createSagaMiddleware();
 
 // saga generator function
-function* watcherSaga() {}
+function* watcherSaga(){
+  yield takeEvery('SEND_FEEDBACK', postFeedback);
+}
 
+// post request function 
+function* postFeedback(action){
+  try{
+    yield axios.post('/feedback', action.payload)
+    yield put({type:'FEEDBACK_SUCCESS'})
+  }catch(error){
+    console.log('error with POST for feedback, ', error)
+    yield put({type:'FEEDBACK_FAILED'})
+  }
+}
 // ----- redux -----
 // # reducers
 // question answers
@@ -41,11 +53,26 @@ function feedbackAnswer(state = {}, action) {
   }
 }
 
+// post request validation 
+function postMade(state = false, action){
+  switch (action.type){
+    case "FEEDBACK_SUCCESS":
+      return state = true;
+    case "FEEDBACK_FAILED":
+      return state = false;
+    default:
+      return state = false;
+  }
+}
+
+
 // store instance
 const store = createStore(
   combineReducers({
     // reducers
     feedbackAnswer,
+    postMade,
+
   }),
 
   applyMiddleware(logger, sagaMiddleware)

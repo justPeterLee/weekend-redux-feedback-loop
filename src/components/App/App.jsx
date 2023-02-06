@@ -10,11 +10,14 @@ import Understanding from "../Questions/Understanding/Understanding";
 import Support from "../Questions/Support/Support";
 import Comments from "../Questions/Comments/Comments";
 
+import Modal from "../Modal/Modal";
 import Review from "../Review/Review";
 import Admin from "../Admin/Admin";
 
+import { useSelector } from "react-redux";
 
 function App() {
+  const pageCondition = useSelector(store => store.postMade)
   return (
     <Router>
       {/* global header for a pages/routes */}
@@ -57,6 +60,11 @@ function App() {
       <Route path='/feedback/admin' exact>
         <Admin />
       </Route>
+
+      {pageCondition && (<Route path='/feedback/modal'>
+        <Modal />
+      </Route>)}
+      
     </Router>
   );
 }
