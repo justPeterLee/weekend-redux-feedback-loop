@@ -2,13 +2,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import "./Modal.css";
-function Modal() {
-  const history = useHistory();
 
+function Modal() {
+
+  // declared instances
+  const history = useHistory();
   const dispatch = useDispatch();
 
+  // to see if the post request to the data base was successful or not
   const pageCondition = useSelector((store) => store.postMade);
 
+  // on button click
+  // clear redux / create a new feedback
+  // if POST req failed a hard page reload will be made
   const newFeedback = () => {
     if (pageCondition) {
       dispatch({ type: "CLEAR" });
@@ -19,8 +25,10 @@ function Modal() {
       window.location.reload(true);
     }
   };
+
   return (
     <div className="start-container">
+      {/* conditionally render page content, to see if POST was made to database */}
       {pageCondition ? (
         <h1 className="start-header">FeedBack Sent!</h1>
       ) : (

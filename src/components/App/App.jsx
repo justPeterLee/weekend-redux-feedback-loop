@@ -1,7 +1,8 @@
+//imported dependencies
 import React from "react";
-import axios from "axios";
 import { HashRouter as Router, Route } from "react-router-dom";
 import "./App.css";
+import { useSelector } from "react-redux";
 
 // imported components 
 import CreateFeedback from "../CreateFeedback/CreateFeedback";
@@ -14,10 +15,13 @@ import Modal from "../Modal/Modal";
 import Review from "../Review/Review";
 import Admin from "../Admin/Admin";
 
-import { useSelector } from "react-redux";
 
 function App() {
+
+  // conditionally render page (only when a feedback has been submited)
   const pageCondition = useSelector(store => store.postMade)
+
+
   return (
     <Router>
       {/* global header for a pages/routes */}
@@ -32,6 +36,8 @@ function App() {
       <Route path='/' exact>
         <CreateFeedback />
       </Route>
+
+
 
       {/* Feeedback Question */}
       <Route path='/feedback/feeling' exact>
@@ -51,16 +57,21 @@ function App() {
       </Route>
 
 
+
       {/* Review */}
       <Route path='/feedback/review' exact>
         <Review />
       </Route>
+
+
 
       {/* Manage Feedback */}
       <Route path='/feedback/admin' exact>
         <Admin />
       </Route>
 
+
+      {/* conditionally render a success page */}
       {pageCondition && (<Route path='/feedback/modal'>
         <Modal />
       </Route>)}
